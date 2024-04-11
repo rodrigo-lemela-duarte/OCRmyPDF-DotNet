@@ -37,4 +37,4 @@ namespace TestApplication
 - [Rodrigo Lemela Duarte](https://github.com/rodrigo-lemela-duarte)
 
 ## English
-- [ReadME EN](https://github.com/rodrigo-lemela-duarte/OCRmyPDF-DotNet/blob/main/README-en.md)
+- [README EN](https://github.com/rodrigo-lemela-duarte/OCRmyPDF-DotNet/blob/main/README-en.md)
