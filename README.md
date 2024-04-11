@@ -2,7 +2,7 @@
 Este é um pequeno wrapper, feito em .NET 8/C#, para o projeto OCRmyPDF.
 
 ## Requerimentos
-Fazendo o clone deste, ou utilizando o nuget, não haverá nenhum requerimento para a execução deste, caso queira refazer o executável, será necessário ir até o projeto [OCRmyPDF](https://github.com/ocrmypdf/OCRmyPDF) e seguir as [instruções de instalação](https://ocrmypdf.readthedocs.io/en/latest/installation.html).
+Fazendo o clone deste, ou utilizando o [nuget](https://www.nuget.org/packages/OCRmyPDF-DotNet/1.0.0), não haverá nenhum requerimento para a execução deste, caso queira refazer o executável, será necessário ir até o projeto [OCRmyPDF](https://github.com/ocrmypdf/OCRmyPDF) e seguir as [instruções de instalação](https://ocrmypdf.readthedocs.io/en/latest/installation.html).
 
 ## Uso/Exemplos
 ```dotnet
