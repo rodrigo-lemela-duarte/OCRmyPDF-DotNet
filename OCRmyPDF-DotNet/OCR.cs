@@ -5,7 +5,7 @@ namespace OCRmyPDF
 {
     public class OCR
     {
-        public Response StartProcess(string inputFilePath, string outputFilePath, string language = "eng")
+        public Response StartProcess(string inputFilePath, string outputFilePath, string language = "eng", bool redoOCR = false)
         {
             var response = new Response() { Success = true };
 
@@ -30,8 +30,22 @@ namespace OCRmyPDF
 
                 using (Process process = new Process())
                 {
+                    var arguments = "";
+
+                    if (!string.IsNullOrWhiteSpace(language))
+                    {
+                        arguments = $"-l {language}";
+                    }
+
+                    if (redoOCR)
+                    {
+                        arguments += $"--redo-ocr";
+                    }
+
+                    arguments += $"\"{inputFilePath}\" \"{outputFilePath}\"";
+
                     process.StartInfo.FileName = Path.Combine(AppContext.BaseDirectory, "Embedded", "ocrmypdf.exe");
-                    process.StartInfo.Arguments = $"\"{inputFilePath}\" \"{outputFilePath}\"";
+                    process.StartInfo.Arguments = arguments;
                     process.StartInfo.CreateNoWindow = true;
                     process.StartInfo.UseShellExecute = false;
                     process.StartInfo.RedirectStandardError = true;

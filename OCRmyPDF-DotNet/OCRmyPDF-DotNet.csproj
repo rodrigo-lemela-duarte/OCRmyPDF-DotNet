@@ -17,6 +17,9 @@
     <Product>OCRmyPDF</Product>
     <PackageTags>ocr; pdf; tesseract;</PackageTags>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <AssemblyVersion>1.0.1</AssemblyVersion>
+    <FileVersion>1.0.1</FileVersion>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
