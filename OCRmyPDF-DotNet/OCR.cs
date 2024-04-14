@@ -34,12 +34,12 @@ namespace OCRmyPDF
 
                     if (!string.IsNullOrWhiteSpace(language))
                     {
-                        arguments = $"-l {language}";
+                        arguments = $"-l {language} ";
                     }
 
                     if (redoOCR)
                     {
-                        arguments += $"--redo-ocr";
+                        arguments += $"--redo-ocr ";
                     }
 
                     arguments += $"\"{inputFilePath}\" \"{outputFilePath}\"";

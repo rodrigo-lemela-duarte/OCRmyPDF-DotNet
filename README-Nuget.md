@@ -1,12 +1,9 @@
 # OCRmyPDF-DotNet
 Este é um pequeno wrapper, feito em .NET 8/C#, para o projeto OCRmyPDF.
 
-## Requerimentos
-Fazendo o clone deste, ou utilizando o [NuGet](https://www.nuget.org/packages/OCRmyPDF-DotNet), não haverá nenhum requerimento para a execução deste, caso queira refazer o executável, será necessário ir até o projeto [OCRmyPDF](https://github.com/ocrmypdf/OCRmyPDF) e seguir as [instruções de instalação](https://ocrmypdf.readthedocs.io/en/latest/installation.html).
-
 ## Instalação
 
-Ao usar o [NuGet](https://www.nuget.org/packages/OCRmyPDF-DotNet) para a instalação, depois é necessário fazer a configuração do Embedded.
+Após a instalação é necessário fazer a configuração do Embedded.
 
 ### Configuração no Projeto
 
@@ -57,9 +54,3 @@ namespace TestApplication
     }
 }
 ```
-
-## Licença
-- [Mozilla Public License 2.0](https://github.com/rodrigo-lemela-duarte/OCRmyPDF-DotNet/blob/main/LICENSE)
-
-## Autores
-- [Rodrigo Lemela Duarte](https://github.com/rodrigo-lemela-duarte)
