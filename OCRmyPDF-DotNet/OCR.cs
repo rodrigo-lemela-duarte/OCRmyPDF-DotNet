@@ -55,9 +55,12 @@ namespace OCRmyPDF
 
                     process.WaitForExit();
 
-                    if (!string.IsNullOrEmpty(errorOutput))
+                    if (!string.IsNullOrEmpty(errorOutput) && errorOutput.IndexOf("Error:") > -1)
                     {
+                        var errorIndex = errorOutput.IndexOf("Error:");
+
                         response.Success = false;
+                        response.ErrorType = errorOutput.Substring(0, errorIndex + 5);
                         response.Error = errorOutput;
                     }
                 }
