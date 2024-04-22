@@ -1,62 +1,56 @@
 # OCRmyPDF-DotNet
 Este é um pequeno wrapper, feito em .NET 8/C#, para o projeto OCRmyPDF.
 
-## Requerimentos
-Fazendo o clone deste, ou utilizando o [NuGet](https://www.nuget.org/packages/OCRmyPDF-DotNet), não haverá nenhum requerimento para a execução deste, caso queira refazer o executável, será necessário ir até o projeto [OCRmyPDF](https://github.com/ocrmypdf/OCRmyPDF) e seguir as [instruções de instalação](https://ocrmypdf.readthedocs.io/en/latest/installation.html).
-
 ## Instalação
+Após a instalação, é necessário fazer algunas validações:
 
-Ao usar o [NuGet](https://www.nuget.org/packages/OCRmyPDF-DotNet) para a instalação, depois é necessário fazer a configuração do Embedded.
+### Ambiente Windows
+- Siga a instalação conforme [este link](https://ocrmypdf.readthedocs.io/en/latest/installation.html#installing-on-windows).
 
-### Configuração no Projeto
+### Ambiente Linux
+- Siga a instalação conforme [este link](https://ocrmypdf.readthedocs.io/en/latest/installation.html#installing-on-linux).
 
-Procure a pasta ```Embedded```, clique com o botão direito no ```exe``` e clique em ***propriedades***.
+### Imagem Docker
+Caso deseje criar uma imagem Docker, será necessário adicionar o seguinte código ao seu Dockerfile:
 
-![Embedded e exe](https://i.imgur.com/R8EszP9_d.webp?maxwidth=760&fidelity=grand)
+```dockerfile
+RUN apt-get update && \
+    apt-get install -y python3.11 python3-pip
 
-No "*Copiar para Diretório de Saída*", selecione o "***Copiar se for mais novo***", conforme imagem abaixo:
+RUN apt install -y ocrmypdf
 
-![Propriedades](https://i.imgur.com/fUi7GEa_d.webp?maxwidth=760&fidelity=grand)
+RUN apt-get install -y tesseract-ocr-eng tesseract-ocr-por tesseract-ocr-spa tesseract-ocr-fra
+
+ENV PATH="/usr/bin:${PATH}"
+
+RUN ln -sf /usr/bin/python3.11 /usr/bin/python && \
+    ln -sf /usr/bin/python3.11 /usr/bin/python3
+```
 
 ### Uso/Exemplos
 
-O método principal, ```StartProcess```, espera quatro argumentos:
+O método principal, ```StartProcess```, espera a seguinte entidade:
 
-```dotnet
-StartProcess(string inputFilePath, string outputFilePath, string language = "eng", bool redoOCR = false)
-```
-
-- **inputFilePath** (String - Arquivo que será processado)
-- **outputFilePath** (String - Arquivo final, após processamento)
-- **language** (String - Linguagem do arquivo, caso não seja inglês, é importante enviar)
-- **redoOCR** (Booleano - Caso o arquivo encontre erro ao processar o arquivo, envie como ```true``` e a aplicação irá reprocessa-lo)
-
-Aqui, abaixo, uma chamada exemplo:
-
-```dotnet
-using OCRMyPDF;
-
-namespace TestApplication
+```dotnet  
+public class Request
 {
-    internal class Program
-    {
-        static void Main(string[] args)
-        {
-            var response = new OCR().StartProcess("arquivo.pdf", "arquivo-processado.pdf", "eng", true);
-
-            if (response.Success == false)
-            {
-                Console.WriteLine("erro!");
-                Console.WriteLine(response.Error);
-            }
-            else
-            {
-                Console.WriteLine("sucesso!");
-            }
-        }
-    }
+    public string PythonVersion { get; set; } = string.Empty;
+    public string PythonHome { get; set; } = string.Empty;
+    public string PythonDLL { get; set; } = string.Empty;
+    public string InputFile { get; set; } = string.Empty;
+    public string OutputFile { get; set; } = string.Empty;
+    public string Language { get; set; } = "eng";
+    public bool RedoOCR { get; set; } = false;
 }
 ```
+
+- A propriedade ```PythonVersion``` é a versão do Python que será utilizada. Caso não seja informada, será retornado um erro de versão não encontrada;
+- A propriedade ```PythonHome``` é a instalação do Python que será utilizada, **apenas para ambiente Windows**. Caso não seja informada, será utilizada o valor padrão ```C:\Program Files\Python\Python``` e a versão enviada no ```PythonVersion```;
+- A propriedade ```PythonDLL``` é a DLL/SO que será utilizada. Caso não seja informada será utilizada a DLL/SO padrão do Python, para ambiente Windows é o ```python3.11.dll```, exemplo, e para ambiente Linux é o ```/usr/lib/x86_64-linux-gnu/libpython3.11.so```, exemplo;
+- A propriedade ```InputFile``` será o arquivo a ser processado;
+- A propriedade ```OutputFile``` será o arquivo processado e retornado;
+- A propriedade ```Language``` é a linguagem do arquivo (pt/eng/etc...);
+- A propriedade ```RedoOCR``` será utilizada quando o arquivo já é *selecionável*, mas ainda assim é necessário ser refeito o OCR;
 
 ## Licença
 - [Mozilla Public License 2.0](https://github.com/rodrigo-lemela-duarte/OCRmyPDF-DotNet/blob/main/LICENSE)

@@ -1,46 +1,44 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-    <RootNamespace>OCRmyPDF</RootNamespace>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Title>OCRmyPDF</Title>
-    <Authors>Rodrigo Lemela Duarte</Authors>
-    <Description>OCRmyPDF-DotNet is a simple wrapper, in .NET 8/C#, for the base project, OCRmyPDF</Description>
-    <PackageProjectUrl>https://github.com/rodrigo-lemela-duarte/OCRmyPDF-DotNet</PackageProjectUrl>
-    <PackageReadmeFile>README-Nuget.md</PackageReadmeFile>
-    <RepositoryUrl>https://github.com/rodrigo-lemela-duarte/OCRmyPDF-DotNet.git</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <PackAsTool>False</PackAsTool>
-    <Product>OCRmyPDF</Product>
-    <PackageTags>ocr; pdf; tesseract;</PackageTags>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <AssemblyVersion>1.0.4</AssemblyVersion>
-    <FileVersion>1.0.4</FileVersion>
-    <Version>1.0.4</Version>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<RootNamespace>OCRmyPDF</RootNamespace>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<Title>OCRmyPDF</Title>
+		<Authors>Rodrigo Lemela Duarte</Authors>
+		<Description>OCRmyPDF-DotNet is a simple wrapper, in .NET 8/C#, for the base project, OCRmyPDF</Description>
+		<PackageProjectUrl>https://github.com/rodrigo-lemela-duarte/OCRmyPDF-DotNet</PackageProjectUrl>
+		<PackageReadmeFile>README-Nuget.md</PackageReadmeFile>
+		<RepositoryUrl>https://github.com/rodrigo-lemela-duarte/OCRmyPDF-DotNet.git</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackAsTool>False</PackAsTool>
+		<Product>OCRmyPDF</Product>
+		<PackageTags>ocr; pdf; tesseract;</PackageTags>
+		<PackageLicenseFile>LICENSE</PackageLicenseFile>
+		<AssemblyVersion>1.0.6</AssemblyVersion>
+		<FileVersion>1.0.6</FileVersion>
+		<Version>1.0.6</Version>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <None Remove="Embedded\ocrmypdf.exe" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="..\LICENSE">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\README.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+		<None Include="..\README-Nuget.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
 
-  <ItemGroup>
-    <Content Include="Embedded\ocrmypdf.exe">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="..\LICENSE">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-    <None Include="..\README-Nuget.md">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-  </ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="QuantConnect.pythonnet" Version="2.0.35" />
+	</ItemGroup>
 
 </Project>
